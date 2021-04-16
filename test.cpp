@@ -15,6 +15,7 @@
 using namespace std;
 
 vector<string> split(string);
+bool is_background(string);
 
 int main()
 {
@@ -25,28 +26,28 @@ int main()
     // string s4 = "hello4";
     // const char *s5 = s4.c_str();
 
-    // int x1[] = {1, 2, 3, 4};
-
-    // cout << s1 << endl;
-    // cout << s2 << endl;
-    // cout << s3[0] << endl;
-    // cout << s4 << endl;
-    // cout << s5 << endl;
     vector<string> strvec;
     string input;
     cout << "input: ";
     getline(cin, input);
     strvec = split(input);
 
-    // for (int i = 0; i < strvec.size(); i++)
-    // {
-    //     cout << strvec[i] << endl;
-    // }
-    string last_cmd = strvec.back();
-    if (last_cmd == "&")
-        cout << "is background" << endl;
+    bool isBackground = is_background(strvec.back());
+    if (isBackground)
+    {
+        cout << "background running!" << endl;
+        strvec.back().pop_back();
+    }
 
+    cout << strvec.back() << endl;
     return 0;
+}
+
+bool is_background(string cmd)
+{
+    if (cmd.back() == '&')
+        return true;
+    return false;
 }
 
 vector<string> split(string line)
