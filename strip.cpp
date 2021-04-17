@@ -7,7 +7,7 @@ string strip(string s);
 
 int main()
 {
-    string cmd = "ls <makefile";
+    string cmd = "ls < make file   ";
 
     const char *arg;
     for (int i = 0; i < cmd.length(); i++)
@@ -36,15 +36,13 @@ string strip(string s)
             break;
         }
     }
-
-    for (int i = 0; i < res.length(); i++)
+    for (int i = res.length() - 1; i > 0; i--)
     {
-        if (res[i] == ' ')
+        if (res[i] != ' ')
         {
-            res = res.substr(0, i);
+            res = res.substr(0, i + 1);
             break;
         }
     }
-
     return res;
 }

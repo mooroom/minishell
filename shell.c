@@ -198,6 +198,7 @@ int parse_background(char *cmd)
 void execute_cmd(char *cmdlist)
 {
     parse_redirect(cmdlist);
+    printf("%s\n", cmdlist);
 
     if (makeargv(cmdlist, " \t", cmdargs, MAX_CMD_ARG) <= 0)
         fatal("makeargv_cmdargs error");
