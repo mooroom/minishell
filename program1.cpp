@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <time.h>
 
 using namespace std;
 
@@ -11,7 +12,7 @@ vector<int> merge(vector<int> left, vector<int> right)
 
     while (left.size() > lpointer && right.size() > rpointer)
     {
-        if (left[lpointer] > right[rpointer])
+        if (left[lpointer] < right[rpointer])
         {
             merged.push_back(right[rpointer]);
             rpointer++;
@@ -60,6 +61,7 @@ vector<int> mergeSplit(vector<int> nums)
 
 int main()
 {
+    clock_t start, end;
     int N;
     cin >> N;
 
@@ -73,14 +75,16 @@ int main()
         numbers.push_back(num);
     }
 
+    start = clock();
     sorted = mergeSplit(numbers);
+    end = clock();
 
-    cout << "[sorted]: ";
     for (int i = 0; i < sorted.size(); i++)
     {
         cout << sorted[i] << " ";
     }
     cout << endl;
+    cout << end - start << endl;
 
     return 0;
 }

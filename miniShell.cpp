@@ -14,8 +14,6 @@
 
 using namespace std;
 
-bool is_background;
-
 void cmdline_handler(string cmdline);
 
 int main()
@@ -177,6 +175,7 @@ void cmdline_handler(string cmdline)
         return;
     }
 
+    bool is_background;
     is_background = background_cmd_handler(cmdline);
 
     pid = fork();
